@@ -75,7 +75,7 @@ For questions, issues, or improvements, open a request in the “Issues” tab o
 
 ## ✨ Credits  
 Created by **Elizabeth Doring**  
-Archivist & Digital Preservation Practitioner  
+Oklahoma Department of Libraries Archivist
 
 
 ## 🔄 Workflow Diagram
