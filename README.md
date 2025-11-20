@@ -1,10 +1,6 @@
 # 📦 WARC Preservation Toolkit  
 *A step-by-step workflow for downloading, extracting, renaming, and analyzing Archive-It WARC files.*
 
-[![Documentation](https://img.shields.io/badge/Documentation-Wiki-blue?style=for-the-badge)](https://github.com/edoring/WARC-Preservation-Scripts/wiki)
-[![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)]()
-[![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey?style=for-the-badge)]()
-
 ---
 
 ## 📚 Full Documentation  
