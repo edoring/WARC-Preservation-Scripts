@@ -46,7 +46,36 @@ To use this toolkit, you must download the entire folder to your computer.
 
 You will run *all* scripts from inside the extracted folder. No additional installation is required other than Python.
  
+## How to Install Python (One-Time Setup)
 
+Python is required for some of the tools, but you do **not** need to run Python directly. The PowerShell scripts will use it in the background.
+
+Follow these steps:
+
+1. Open a web browser and go to:  
+   **https://www.python.org/downloads/windows/**
+
+2. On that page, click the yellow button that says something like:  
+   **Download Python 3.x.x**
+
+3. When the file finishes downloading, open your Downloads folder.
+
+4. Double-click the Python installer file (it will be named like `python-3.x.x-amd64.exe`).
+
+5. On the first screen of the installer:
+   - At the bottom, check the box that says:  
+     **Add Python to PATH**
+   - Then click **Install Now**
+
+6. Wait for the installation to complete. This may take a few minutes.
+
+7. When the installer says it is finished, click **Close**.
+
+8. Restart your computer (this helps Windows recognize Python properly).
+
+You only need to do this once on each computer.
+
+---
 ---
 
 ## 🔧 Features  
