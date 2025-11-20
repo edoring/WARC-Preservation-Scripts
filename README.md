@@ -71,7 +71,7 @@ For questions, issues, or improvements, open a request in the “Issues” tab o
 
 ## ✨ Credits  
 Created by **Elizabeth Doring**  
-Archivist
+Archivist-
 Oklahoma Department of Libraries
 
 
