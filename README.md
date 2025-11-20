@@ -17,7 +17,35 @@ It includes scripts for:
 - Extracting `.warc.gz` files into `.warc` format  
 - Renaming WARCs using agency name + capture date  
 - Identifying seed URLs for each capture  
-- Producing clean metadata for preservation systems  
+- Producing clean metadata for preservation systems
+---
+
+## 📥 How to Download the Full Toolkit (Important)
+
+To use this toolkit, you must download the entire folder to your computer.
+
+### Follow these steps:
+
+1. Open the project page in your web browser  
+   ➜ https://github.com/edoring/WARC-Preservation-Scripts
+
+2. Click the green **Code** button near the top right.
+
+3. Select **Download ZIP**.
+
+4. Save the ZIP file to your computer.
+
+5. Right-click the ZIP file and choose **Extract All…**
+
+6. Open the extracted folder.  
+   This extracted folder contains everything you need:
+   - PowerShell scripts  
+   - Python scripts  
+   - Helper tools (jq.exe, wget.exe)  
+   - Documentation  
+
+You will run *all* scripts from inside the extracted folder. No additional installation is required other than Python.
+ 
 
 ---
 
