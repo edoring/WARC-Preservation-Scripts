@@ -64,11 +64,6 @@ It includes scripts for:
 
 ---
 
-## 🆘 Support  
-For questions, issues, or improvements, open a request in the “Issues” tab of the repository.
-
----
-
 ## ✨ Credits  
 Created by **Elizabeth Doring**  
 Archivist-
