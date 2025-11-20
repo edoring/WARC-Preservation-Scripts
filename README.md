@@ -76,7 +76,6 @@ Follow these steps:
 You only need to do this once on each computer.
 
 ---
----
 
 ## 🔧 Features  
 - ✔ **Simple PowerShell scripts**  
