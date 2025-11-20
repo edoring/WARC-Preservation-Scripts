@@ -103,7 +103,7 @@ You only need to do this once on each computer.
 
 ## ✨ Credits  
 Created by **Elizabeth Doring**  
-Archivist-  
+Archivist
 Oklahoma Department of Libraries
 
 
