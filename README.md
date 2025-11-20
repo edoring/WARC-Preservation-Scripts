@@ -71,8 +71,8 @@ For questions, issues, or improvements, open a request in the “Issues” tab o
 
 ## ✨ Credits  
 Created by **Elizabeth Doring**  
-Oklahoma Department of Libraries Archivist
+Archivist
+Oklahoma Department of Libraries
 
 
-## 🔄 Workflow Diagram
 
