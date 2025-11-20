@@ -17,7 +17,6 @@ It includes scripts for:
 - Extracting `.warc.gz` files into `.warc` format  
 - Renaming WARCs using agency name + capture date  
 - Identifying seed URLs for each capture  
-- Producing clean metadata for preservation systems  
 
 ---
 
