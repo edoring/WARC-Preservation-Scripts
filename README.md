@@ -77,17 +77,6 @@ You only need to do this once on each computer.
 
 ---
 
-## 🔧 Features  
-- ✔ **Simple PowerShell scripts**  
-- ✔ **Python automation integrated into PowerShell** (no Python commands required)  
-- ✔ **Clear on-screen prompts**  
-- ✔ **Renamed files saved separately for safety**  
-- ✔ **Automatic metadata CSV generation**  
-- ✔ **Seed URL extraction with warnings for missing or multiple seeds**  
-- ✔ **Staff-friendly documentation**  
-
----
-
 ## 🗂 Quick Links (Wiki)
 
 - **[Home – Overview](https://github.com/edoring/WARC-Preservation-Scripts/wiki)**
