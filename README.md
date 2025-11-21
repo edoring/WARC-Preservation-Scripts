@@ -1,125 +1,146 @@
-# 📦 WARC Preservation Toolkit  
-*A guided workflow for downloading, verifying, extracting, renaming, and analyzing Archive-It WARC files.*
+<h1>📦 WARC Preservation Toolkit</h1>
+<p><em>A guided workflow for downloading, verifying, extracting, renaming, and analyzing Archive-It WARC files.</em></p>
 
-This toolkit provides a simple, reliable process for working with Archive-It WARC files on a Windows computer. Each step uses a script that prompts you for information—no coding experience is required.
+<p>
+This toolkit provides a simple, reliable process for working with Archive-It WARC files on a Windows computer.<br>
+Each step uses a script that prompts you for information—no coding experience is required.
+</p>
 
----
+<hr>
 
-## 🚀 What the Toolkit Does
+<h2>🚀 What the Toolkit Does</h2>
 
-The scripts in this toolkit help you:
+<p>The scripts in this toolkit help you:</p>
 
-- Download WARCs from an Archive-It collection  
-- Check the completeness of your downloaded files  
-- Extract compressed `.warc.gz` files  
-- Create renamed copies of WARC files using a clear, consistent pattern  
-- Identify primary seed URLs for each WARC  
-- Generate structured metadata files (TXT, JSON, CSV, XLSX)  
+<ul>
+  <li>Download WARCs from an Archive-It collection</li>
+  <li>Check the completeness of your downloaded files</li>
+  <li><strong>Extract compressed <code>.warc.gz</code> files using a Python-based workflow (default)</strong></li>
+  <li>Create renamed copies of WARC files using a clear, consistent pattern</li>
+  <li>Identify primary seed URLs for each WARC</li>
+  <li>Generate structured metadata files (TXT, JSON, CSV, XLSX)</li>
+</ul>
 
-All tools run through **PowerShell** using simple prompts.
+<p>All tools run through <strong>PowerShell</strong> using simple prompts.</p>
 
----
+<hr>
 
-## 📁 Included Tools
+<h2>📁 Included Tools</h2>
 
-The toolkit folder contains:
+<p>The toolkit folder contains:</p>
 
-- `1_Download-WARCs-ByCollection.ps1`  
-- `2_Check-WarcDownloads.ps1`  
-- `3_Extract-Folder-Warcs.ps1`  
-- `4_Rename-WARCs.ps1`  
-- `5_Identify-Seeds.ps1`  
-- Python helpers:
-  - `rename_warcs_copy_agency.py`
-  - `warc_seed_tools.py`
-- Helper executables:
-  - `wget.exe`
-  - `jq.exe`
+<ul>
+  <li><code>1_Download-WARCs-ByCollection.ps1</code></li>
+  <li><code>2_Check-WarcDownloads.ps1</code></li>
+  <li><code>3_Extract-Collection-WARCs_Python.ps1</code> <strong>(new default extractor)</strong></li>
+  <li><code>Legacy_Extract-Folder-Warcs.ps1</code> <em>(previous 7-Zip method)</em></li>
+  <li><code>4_Rename-WARCs.ps1</code></li>
+  <li><code>5_Identify-Seeds.ps1</code></li>
+</ul>
 
-No additional tools need to be downloaded.
+<p>Python helpers:</p>
+<ul>
+  <li><code>convert_warc_gz.py</code></li>
+  <li><code>rename_warcs_copy_agency.py</code></li>
+  <li><code>warc_seed_tools.py</code></li>
+</ul>
 
----
+<p>Helper executables:</p>
+<ul>
+  <li><code>wget.exe</code></li>
+  <li><code>jq.exe</code></li>
+</ul>
 
-## 📥 How to Download This Toolkit
+<p>No additional tools need to be downloaded.</p>
 
-1. Visit the repository:  
-   **https://github.com/edoring/WARC-Preservation-Scripts**
+<hr>
 
-2. Click the green **Code** button.
+<h2>📥 How to Download This Toolkit</h2>
 
-3. Select **Download ZIP**.
+<ol>
+  <li>Visit the repository:<br>
+      <strong>https://github.com/edoring/WARC-Preservation-Scripts</strong>
+  </li>
+  <li>Click the green <strong>Code</strong> button.</li>
+  <li>Select <strong>Download ZIP</strong>.</li>
+  <li>Save the ZIP and choose <strong>Extract All…</strong></li>
+  <li>Open the extracted folder.<br>
+      This folder contains all scripts and tools.
+  </li>
+</ol>
 
-4. Save the ZIP and choose **Extract All…**
+<hr>
 
-5. Open the extracted folder.  
-   This folder contains all scripts and tools.
+<h2>🐍 Python Installation (One-Time Setup)</h2>
 
----
+<p>The toolkit uses Python internally for extracting <code>.warc.gz</code> files.</p>
 
-## 🐍 Python Installation (One-Time Setup)
+<p>To install Python:</p>
 
-Some scripts use Python automatically in the background.
+<ol>
+  <li>Visit: <a href="https://www.python.org/downloads/windows/">https://www.python.org/downloads/windows/</a></li>
+  <li>Click <strong>Download Python 3.x.x</strong></li>
+  <li>Run the installer</li>
+  <li>Check the box: <strong>Add Python to PATH</strong></li>
+  <li>Click <strong>Install Now</strong></li>
+  <li>Restart your computer</li>
+</ol>
 
-To install Python:
+<p>You only need to do this once.</p>
 
-1. Visit: https://www.python.org/downloads/windows/  
-2. Click **Download Python 3.x.x**  
-3. Run the installer  
-4. Check the box: **Add Python to PATH**  
-5. Click **Install Now**  
-6. Restart your computer  
+<hr>
 
-You only need to do this once.
+<h2>🔧 Running the Scripts</h2>
 
----
+<p>All scripts in this toolkit are run the same way:</p>
 
-## 🔧 Running the Scripts
+<ol>
+  <li>Open <strong>File Explorer</strong></li>
+  <li>Navigate to the Toolkit folder</li>
+  <li>Right-click a script</li>
+  <li>Select <strong>Run with PowerShell</strong></li>
+  <li>Follow the prompts</li>
+</ol>
 
-All scripts in this toolkit are run the same way:
+<p>Each script will guide you step by step.</p>
 
-1. Open **File Explorer**  
-2. Navigate to the Toolkit folder  
-3. Right-click a script  
-4. Select **Run with PowerShell**  
-5. Follow the prompts  
+<hr>
 
-Each script will guide you step by step.
+<h2>📚 Full Documentation</h2>
 
----
+<p>The full workflow is documented in the GitHub Wiki:</p>
 
-## 📚 Full Documentation
+<p>👉 <strong><a href="https://github.com/edoring/WARC-Preservation-Scripts/wiki">https://github.com/edoring/WARC-Preservation-Scripts/wiki</a></strong></p>
 
-The full workflow is documented in the GitHub Wiki:
+<p>The workflow includes:</p>
 
-👉 **https://github.com/edoring/WARC-Preservation-Scripts/wiki**
+<ol>
+  <li><strong>Step 1 – Download WARC Files</strong></li>
+  <li><strong>Step 2 – Verify & Repair Downloads</strong></li>
+  <li><strong>Step 3 – Extract WARC Files (Python Default Method)</strong></li>
+  <li><strong>Step 4 – Rename WARC Files</strong></li>
+  <li><strong>Step 5 – Identify Seed URLs</strong></li>
+</ol>
 
-The workflow includes:
+<p>Each page mirrors the scripts exactly so you always know what to expect.</p>
 
-1. **Step 1 – Download WARC Files**  
-2. **Step 2 – Verify & Repair Downloads**  
-3. **Step 3 – Extract WARC Files**  
-4. **Step 4 – Rename WARC Files**  
-5. **Step 5 – Identify Seed URLs**  
+<hr>
 
-Each page mirrors the scripts exactly so you always know what to expect.
+<h2>🖥 System Requirements</h2>
 
----
+<ul>
+  <li>Windows 10 or Windows 11</li>
+  <li>PowerShell</li>
+  <li>Python 3.10+</li>
+  <li>Archive-It username and password</li>
+  <li>Archive-It collection ID</li>
+  <li>Adequate disk space for WARCs</li>
+</ul>
 
-## 🖥 System Requirements
+<hr>
 
-- Windows 10 or Windows 11  
-- PowerShell  
-- Python 3.10+  
-- Archive-It username and password  
-- Archive-It collection ID  
-- Adequate disk space for WARCs  
+<h2>✨ Credits</h2>
 
----
-
-## ✨ Credits
-
-Created and maintained by  
-**Elizabeth Doring**  
-Archivist – Oklahoma Department of Libraries  
-
-
+<p>Created and maintained by<br>
+<strong>Elizabeth Doring</strong><br>
+Archivist – Oklahoma Department of Libraries</p>
