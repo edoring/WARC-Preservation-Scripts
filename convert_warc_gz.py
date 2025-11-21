@@ -9,10 +9,8 @@ Usage examples:
     # Extract all .warc.gz files in a collection folder into an Extracted subfolder
     python convert_warc_gz.py "C:\\WARCs\\Collection-2568" -o "C:\\WARCs\\Collection-2568\\Extracted"
 
-    # Extract a single .warc.gz file (output .warc goes next to it unless -o is given)
-    python convert_warc_gz.py "C:\\WARCs\\ARCHIVEIT-2568-20110428.warc.gz"
-
-This script is designed to be run from the root of the WARC-Preservation-Scripts repository.
+    # Extract a single .warc.gz file
+    python convert_warc_gz.py "C:\\WARCs\\file.warc.gz" -o "C:\\WARCs\\Extracted"
 """
 
 import os
@@ -29,26 +27,19 @@ def is_warc_gz(path: str) -> bool:
 
 def ensure_output_dir(path: str) -> None:
     """Create the output directory if it does not already exist."""
-    if not os.path.isdir(path):
-        os.makedirs(path, exist_ok=True)
+    os.makedirs(path, exist_ok=True)
 
 
-def compute_output_path(
-    input_path: str,
-    output_dir: Optional[str] = None
-) -> str:
+def compute_output_path(input_path: str, output_dir: Optional[str] = None) -> str:
     """
-    Given an input .warc.gz path and an optional output directory,
+    Given an input .warc.gz file and an optional output directory,
     return the full output .warc path.
-
-    - If output_dir is provided, the .warc is written there.
-    - Otherwise, the .warc is written alongside the input file.
     """
     dirname, filename = os.path.split(input_path)
 
-    # Strip only the .gz extension, keep .warc
+    # Strip only the .gz part, keep .warc
     if filename.lower().endswith(".gz"):
-        base_name = filename[:-3]  # remove trailing ".gz"
+        base_name = filename[:-3]  # removes '.gz'
     else:
         base_name = filename
 
@@ -59,21 +50,16 @@ def compute_output_path(
         return os.path.join(dirname, base_name)
 
 
-def convert_single_file(
-    input_path: str,
-    output_path: str,
-    overwrite: bool = False
-) -> Tuple[bool, str]:
+def convert_single_file(input_path: str, output_path: str, overwrite: bool = False) -> Tuple[bool, str]:
     """
     Convert a single .warc.gz file to .warc.
-
-    Returns (success, message).
+    Returns (success: bool, message: str).
     """
     if not os.path.isfile(input_path):
-        return False, f"[!] INPUT NOT FOUND: {input_path}"
+        return False, f"[X] INPUT NOT FOUND: {input_path}"
 
     if not is_warc_gz(input_path):
-        return False, f"[!] SKIPPING (not .warc.gz): {input_path}"
+        return False, f"[X] SKIPPING (not .warc.gz): {input_path}"
 
     if os.path.exists(output_path) and not overwrite:
         return False, f"[!] SKIPPING (output exists): {output_path}"
@@ -83,47 +69,41 @@ def convert_single_file(
         print(f"    IN  = {input_path}")
         print(f"    OUT = {output_path}")
 
-        # Make sure parent directory for output exists
-        out_dir = os.path.dirname(output_path)
-        if out_dir and not os.path.isdir(out_dir):
-            os.makedirs(out_dir, exist_ok=True)
+        # Ensure directory exists
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
         with gzip.open(input_path, "rb") as f_in:
             with open(output_path, "wb") as f_out:
                 shutil.copyfileobj(f_in, f_out)
 
         return True, f"[✓] DONE: {output_path}"
+
     except Exception as e:
         return False, f"[X] ERROR converting {input_path}: {e}"
 
 
-def convert_folder(
-    folder_path: str,
-    output_dir: Optional[str] = None,
-    overwrite: bool = False
-) -> None:
+def convert_folder(folder_path: str, output_dir: Optional[str], overwrite: bool) -> None:
     """
-    Convert all .warc.gz files in a single folder (non-recursive) to .warc.
-
-    - folder_path: directory containing .warc.gz files
-    - output_dir:  where to place .warc files (if None, use folder_path)
+    Convert all .warc.gz files in a single folder (non-recursive).
     """
     if not os.path.isdir(folder_path):
         print(f"[X] ERROR: Folder does not exist: {folder_path}")
         return
 
     print(f"[+] Scanning folder: {folder_path}")
+
     if output_dir:
-        print(f"[+] Output folder: {output_dir}")
         ensure_output_dir(output_dir)
 
+    # Only look for .warc.gz at the top level
     warc_gz_files = [
-        f for f in os.listdir(folder_path)
+        os.path.join(folder_path, f)
+        for f in os.listdir(folder_path)
         if is_warc_gz(f)
     ]
 
     if not warc_gz_files:
-        print("[!] No .warc.gz files found in this folder.")
+        print("[X] ERROR: No .warc.gz files were found in this folder.")
         return
 
     total = len(warc_gz_files)
@@ -133,19 +113,19 @@ def convert_folder(
     failures = 0
     skipped = 0
 
-    for idx, filename in enumerate(warc_gz_files, start=1):
-        input_path = os.path.join(folder_path, filename)
-        out_path = compute_output_path(input_path, output_dir)
-
+    for idx, file_path in enumerate(warc_gz_files, start=1):
+        filename = os.path.basename(file_path)
         print(f"--- [{idx}/{total}] ----------------------------")
-        ok, msg = convert_single_file(input_path, out_path, overwrite=overwrite)
+
+        out_path = compute_output_path(file_path, output_dir)
+        ok, msg = convert_single_file(file_path, out_path, overwrite=overwrite)
+
         print(msg)
         print()
 
         if ok:
             successes += 1
         else:
-            # classify a bit: existing output counts as 'skipped', others as 'failed'
             if "SKIPPING (output exists)" in msg:
                 skipped += 1
             else:
@@ -163,18 +143,16 @@ def convert_folder(
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Convert .warc.gz files in a collection folder to .warc."
+        description="Convert .warc.gz files in a folder into .warc files."
     )
     parser.add_argument(
         "input",
-        help="Path to a .warc.gz file OR a folder containing .warc.gz files."
+        help="Path to a .warc.gz file or a folder containing .warc.gz files."
     )
     parser.add_argument(
-        "-o",
-        "--output",
+        "-o", "--output",
         dest="output_dir",
-        help="Optional output folder for .warc files. "
-             "If omitted, .warc files are written next to the inputs."
+        help="Output folder for the extracted .warc files."
     )
     parser.add_argument(
         "--overwrite",
@@ -189,17 +167,19 @@ def main() -> None:
     input_path = os.path.abspath(args.input)
     output_dir = os.path.abspath(args.output_dir) if args.output_dir else None
 
+    # If input is a directory → extract folder mode
     if os.path.isdir(input_path):
         convert_folder(input_path, output_dir=output_dir, overwrite=args.overwrite)
-    else:
-        # Single-file mode (still allowed, even though your docs emphasize collections)
-        if not is_warc_gz(input_path):
-            print(f"[X] ERROR: Input is not a .warc.gz file: {input_path}")
-            return
+        return
 
-        out_path = compute_output_path(input_path, output_dir)
-        ok, msg = convert_single_file(input_path, out_path, overwrite=args.overwrite)
-        print(msg)
+    # Otherwise, treat as single file extraction
+    if not is_warc_gz(input_path):
+        print(f"[X] ERROR: Input is not a .warc.gz file: {input_path}")
+        return
+
+    out_path = compute_output_path(input_path, output_dir)
+    ok, msg = convert_single_file(input_path, out_path, overwrite=args.overwrite)
+    print(msg)
 
 
 if __name__ == "__main__":
