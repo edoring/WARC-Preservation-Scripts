@@ -15,7 +15,7 @@ Each step uses a script that prompts you for information—no coding experience 
 <ul>
   <li>Download WARCs from an Archive-It collection</li>
   <li>Check the completeness of your downloaded files</li>
-  <li><strong>Extract compressed <code>.warc.gz</code> files using a Python-based workflow (default)</strong></li>
+  <li>Extract compressed <code>.warc.gz</code> files using a Python-based workflow (default)</li>
   <li>Create renamed copies of WARC files using a clear, consistent pattern</li>
   <li>Identify primary seed URLs for each WARC</li>
   <li>Generate structured metadata files (TXT, JSON, CSV, XLSX)</li>
@@ -32,7 +32,7 @@ Each step uses a script that prompts you for information—no coding experience 
 <ul>
   <li><code>1_Download-WARCs-ByCollection.ps1</code></li>
   <li><code>2_Check-WarcDownloads.ps1</code></li>
-  <li><code>3_Extract-Collection-WARCs_Python.ps1</code> <strong>(new default extractor)</strong></li>
+  <li><code>3_Extract-Collection-WARCs_Python.ps1</code> (new default extractor)</li>
   <li><code>Legacy_Extract-Folder-Warcs.ps1</code> <em>(previous 7-Zip method)</em></li>
   <li><code>4_Rename-WARCs.ps1</code></li>
   <li><code>5_Identify-Seeds.ps1</code></li>
@@ -133,7 +133,7 @@ Each step uses a script that prompts you for information—no coding experience 
   <li>PowerShell</li>
   <li>Python 3.10+</li>
   <li>Archive-It username and password</li>
-  <li>Archive-It collection ID</li>
+  <li>Archive-It collection ID(s)</li>
   <li>Adequate disk space for WARCs</li>
 </ul>
 
