@@ -137,9 +137,3 @@ This toolkit provides a simple, reliable process for working with Archive-It WAR
 </ul>
 
 <hr>
-
-<h2>✨ Credits</h2>
-
-<p>Created and maintained by<br>
-<strong>Elizabeth Doring</strong><br>
-Archivist – Oklahoma Department of Libraries</p>
