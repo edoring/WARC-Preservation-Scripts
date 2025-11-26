@@ -3,7 +3,6 @@
 
 <p>
 This toolkit provides a simple, reliable process for working with Archive-It WARC files on a Windows computer.<br>
-Each step uses a script that prompts you for information—no coding experience is required.
 </p>
 
 <hr>
