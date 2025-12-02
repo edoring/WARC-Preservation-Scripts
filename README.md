@@ -137,3 +137,12 @@ This toolkit provides a simple, reliable process for working with Archive-It WAR
 </ul>
 
 <hr>
+
+## 📌 Transparency Statement: AI in Toolkit Development
+
+AI tools were incorporated during the development of this project to assist with:
+- Generating and refining PowerShell and Python script logic  
+- Drafting and structuring user documentation  
+- Ensuring instructions are clear for users with minimal technical experience  
+
+All AI-generated material was manually reviewed, edited, and tested to ensure accuracy and reliability.
